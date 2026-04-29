@@ -1,0 +1,183 @@
+/* ============================================================
+   DevVisionLab – Animations & Micro-interactions
+   ============================================================ */
+
+/* ── Particle canvas ──────────────────────────────────────── */
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Typing cursor ────────────────────────────────────────── */
+.typed-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--clr-accent);
+  margin-left: 2px;
+  animation: blink .8s step-end infinite;
+  vertical-align: text-bottom;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ── Sparkle burst on hover ───────────────────────────────── */
+.sparkle-wrap {
+  position: relative;
+  display: inline-block;
+}
+.sparkle-wrap .sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--clr-primary);
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* ── Ripple effect ────────────────────────────────────────── */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-anim .6s linear;
+  background: rgba(255,255,255,.2);
+}
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ── Counter animation styles ─────────────────────────────── */
+.count-up { transition: all .1s ease; }
+
+/* ── Loading shimmer ──────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,.04) 25%,
+    rgba(255,255,255,.08) 50%,
+    rgba(255,255,255,.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ── Hover lift group ─────────────────────────────────────── */
+.lift-group .lift-item {
+  transition: transform var(--dur-mid) var(--ease-spring);
+}
+.lift-group:hover .lift-item:nth-child(1) { transform: translateY(-6px); }
+.lift-group:hover .lift-item:nth-child(2) { transform: translateY(-4px); transition-delay: .05s; }
+.lift-group:hover .lift-item:nth-child(3) { transform: translateY(-2px); transition-delay: .1s; }
+
+/* ── Gradient border card ─────────────────────────────────── */
+.gradient-border {
+  position: relative;
+  background: var(--clr-surface);
+  border-radius: var(--r-lg);
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: var(--grad-primary);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--dur-mid) ease;
+}
+.gradient-border:hover::before { opacity: 1; }
+
+/* ── Floating animation for cards ────────────────────────── */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.floating { animation: float 4s ease-in-out infinite; }
+.floating-slow { animation: float 6s ease-in-out infinite; }
+.floating-fast { animation: float 2.5s ease-in-out infinite; }
+
+/* ── Orbit ring ───────────────────────────────────────────── */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+.orbit-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--clr-primary);
+  border-radius: 50%;
+  position: absolute;
+  animation: orbit 4s linear infinite;
+}
+.orbit-dot:nth-child(2) { animation-delay: -2s; background: var(--clr-accent); }
+
+/* ── Morphing blob background ─────────────────────────────── */
+@keyframes morph {
+  0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+.morphing-blob {
+  animation: morph 8s ease-in-out infinite;
+}
+
+/* ── Stagger children ─────────────────────────────────────── */
+.stagger > * { opacity: 0; transform: translateY(24px); }
+.stagger.visible > *:nth-child(1) { animation: fadeInUp .6s var(--ease-out-expo) .05s forwards; }
+.stagger.visible > *:nth-child(2) { animation: fadeInUp .6s var(--ease-out-expo) .12s forwards; }
+.stagger.visible > *:nth-child(3) { animation: fadeInUp .6s var(--ease-out-expo) .19s forwards; }
+.stagger.visible > *:nth-child(4) { animation: fadeInUp .6s var(--ease-out-expo) .26s forwards; }
+.stagger.visible > *:nth-child(5) { animation: fadeInUp .6s var(--ease-out-expo) .33s forwards; }
+.stagger.visible > *:nth-child(6) { animation: fadeInUp .6s var(--ease-out-expo) .4s forwards; }
+.stagger.visible > *:nth-child(7) { animation: fadeInUp .6s var(--ease-out-expo) .47s forwards; }
+.stagger.visible > *:nth-child(8) { animation: fadeInUp .6s var(--ease-out-expo) .54s forwards; }
+
+/* ── Spinning gradient ring ───────────────────────────────── */
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.spin-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: conic-gradient(from 0deg, var(--clr-primary), var(--clr-accent), transparent, var(--clr-primary));
+  animation: spin 8s linear infinite;
+  pointer-events: none;
+}
+
+/* ── Wave line ────────────────────────────────────────────── */
+@keyframes wave {
+  0%,100% { d: path("M 0 20 Q 25 0 50 20 Q 75 40 100 20"); }
+  50%      { d: path("M 0 20 Q 25 40 50 20 Q 75 0 100 20"); }
+}
+
+/* ── Glow button pulse ────────────────────────────────────── */
+.btn-glow {
+  animation: pulse-ring 2.5s ease infinite;
+}
+
+/* ── Card shine effect ────────────────────────────────────── */
+.card-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,.06) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0s;
+  pointer-events: none;
+}
+.bento-card:hover .card-shine {
+  transform: translateX(100%);
+  transition: transform .8s ease;
+}

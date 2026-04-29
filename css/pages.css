@@ -1,0 +1,362 @@
+/* ============================================================
+   DevVisionLab – Page-specific styles (home, services, etc.)
+   ============================================================ */
+
+/* ── Hero Bento ───────────────────────────────────────────── */
+.hero-bento-wrap {
+  padding-block: calc(var(--nav-h) + 4rem) 5rem;
+  position: relative;
+}
+
+/* ── Shared Inner Page Hero Fill ─────────────────────────── */
+.page-hero-fill {
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-fill::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--nav-h) + 1.2rem);
+  right: clamp(1rem, 4vw, 4rem);
+  width: min(36vw, 420px);
+  height: clamp(180px, 26vw, 300px);
+  border-radius: var(--r-xl);
+  background: linear-gradient(145deg, rgba(108,99,255,.18) 0%, rgba(0,212,255,.12) 100%);
+  border: 1px solid rgba(108,99,255,.28);
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+  z-index: 0;
+  pointer-events: none;
+}
+.page-hero-fill::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--nav-h) + .2rem);
+  right: clamp(-6rem, -4vw, -2rem);
+  width: min(28vw, 320px);
+  height: min(28vw, 320px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,.2) 0%, rgba(0,212,255,0) 70%);
+  filter: blur(2px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .page-hero-fill::before,
+  .page-hero-fill::after {
+    display: none;
+  }
+}
+
+/* large hero card */
+.hero-main-card {
+  grid-column: span 7;
+  grid-row: span 2;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem;
+  background: linear-gradient(145deg, rgba(26,29,46,.92) 0%, rgba(10,11,16,.96) 100%);
+}
+.hero-side-card {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.hero-metric-card {
+  grid-column: span 5;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Privacy shield card */
+.shield-card {
+  grid-column: span 4;
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+.shield-icon {
+  width: 80px;
+  height: 80px;
+  margin-inline: auto;
+  margin-bottom: 1.25rem;
+}
+
+/* Tech pill cluster */
+.pill-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+/* ── App Portfolio Cards ──────────────────────────────────── */
+.app-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--gap);
+}
+.app-item-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  padding: 1.75rem;
+  transition: all var(--dur-mid) var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+.app-item-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--grad-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-mid) var(--ease-out-expo);
+}
+.app-item-card:hover { transform: translateY(-6px); border-color: rgba(108,99,255,.35); }
+.app-item-card:hover::after { transform: scaleX(1); }
+
+/* ── Values Section ───────────────────────────────────────── */
+.values-bento {
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  gap: var(--gap);
+}
+.value-hero-card {
+  grid-column: span 5;
+  background: linear-gradient(135deg, rgba(108,99,255,.2) 0%, rgba(0,212,255,.1) 100%);
+  border: 1px solid rgba(108,99,255,.3);
+  border-radius: var(--r-xl);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+}
+.value-small-card {
+  grid-column: span 3.5;
+  border-radius: var(--r-lg);
+  padding: 2rem 1.75rem;
+}
+
+/* ── Services Page ────────────────────────────────────────── */
+.service-big-card {
+  grid-column: span 6;
+  padding: 2.5rem;
+  min-height: 300px;
+}
+.service-icon-xl {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-md);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* process steps */
+.process-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.75rem;
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  transition: all var(--dur-mid) var(--ease-out-expo);
+}
+.process-step:hover { border-color: rgba(108,99,255,.3); transform: translateX(4px); }
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ── Team Page ────────────────────────────────────────────── */
+.team-hero-bento {
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  gap: var(--gap);
+}
+.core-value-pill {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-md);
+  transition: all var(--dur-mid) ease;
+}
+.core-value-pill:hover { border-color: var(--clr-primary); background: rgba(108,99,255,.06); }
+
+/* tech expertise */
+.expertise-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.expertise-bar-item { display: flex; flex-direction: column; gap: .4rem; }
+.expertise-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* ── News Page ────────────────────────────────────────────── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--gap);
+}
+.news-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: all var(--dur-mid) var(--ease-out-expo);
+}
+.news-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+.news-thumb {
+  height: 200px;
+  background: var(--clr-surface2);
+  position: relative;
+  overflow: hidden;
+}
+.news-thumb-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news-body { padding: 1.5rem; }
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .75rem;
+  font-size: .8rem;
+  color: var(--clr-muted);
+}
+.news-title { font-size: 1.05rem; font-weight: 700; line-height: 1.4; margin-bottom: .75rem; }
+.news-excerpt { font-size: .88rem; color: var(--clr-muted); line-height: 1.65; }
+
+/* featured news */
+.news-featured {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  min-height: 340px;
+}
+.news-featured-thumb {
+  background: var(--clr-surface2);
+  position: relative;
+  overflow: hidden;
+}
+.news-featured-body {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ── Contact Page ─────────────────────────────────────────── */
+.contact-bento {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap);
+}
+.contact-info-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-xl);
+  padding: 3rem;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-md);
+  margin-bottom: 1rem;
+  transition: border-color var(--dur-fast) ease;
+}
+.contact-item:hover { border-color: rgba(108,99,255,.4); }
+.contact-form-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-xl);
+  padding: 3rem;
+}
+.map-embed {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-top: 2rem;
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-muted);
+  font-size: .9rem;
+}
+
+/* ── Animated dots decoration ─────────────────────────────── */
+.dots-pattern {
+  background-image: radial-gradient(rgba(108,99,255,.18) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ── Noise texture overlay ────────────────────────────────── */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Responsive overrides ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-main-card { grid-column: span 12; min-height: 400px; }
+  .hero-side-card  { grid-column: span 12; }
+  .hero-metric-card { grid-column: span 12; }
+  .value-hero-card  { grid-column: span 12; }
+  .service-big-card { grid-column: span 12; }
+  .news-featured    { grid-template-columns: 1fr; }
+  .news-featured-thumb { min-height: 220px; }
+  .contact-bento { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .hero-main-card { padding: 2rem; }
+  .contact-info-card, .contact-form-card { padding: 2rem; }
+  .news-featured-body { padding: 2rem; }
+  .value-small-card { grid-column: span 12; }
+}
